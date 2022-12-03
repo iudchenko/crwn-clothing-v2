@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "react-dom";
+// import { render } from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
@@ -9,11 +9,29 @@ import App from "./App";
 import { store, persistor } from "./store/store";
 import { stripePromise } from "./utils/stripe/stripe.utils";
 
-import "./index.scss";
+// import "./index.scss";
 
-const rootElement = document.getElementById("root");
+// const rootElement = document.getElementById("root");
 
-render(
+// render(
+//   <React.StrictMode>
+//     <Provider store={store}>
+//       <PersistGate loading={null} persistor={persistor}>
+//         <BrowserRouter>
+//           <Elements stripe={stripePromise}>
+//             <App />
+//           </Elements>
+//         </BrowserRouter>
+//       </PersistGate>
+//     </Provider>
+//   </React.StrictMode>,
+//   rootElement
+// );
+
+import { createRoot } from "react-dom/client";
+const container = document.getElementById("root");
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
@@ -24,6 +42,5 @@ render(
         </BrowserRouter>
       </PersistGate>
     </Provider>
-  </React.StrictMode>,
-  rootElement
+  </React.StrictMode>
 );
